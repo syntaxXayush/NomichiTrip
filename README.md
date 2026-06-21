@@ -22,6 +22,7 @@
 
 - [Overview](#-overview)
 - [Key Features](#-key-features)
+- [Testing & Evaluation Guide](#-testing--evaluation-guide)
 - [System Architecture](#-system-architecture)
 - [Tech Stack](#-tech-stack)
 - [Project Structure](#-project-structure)
@@ -53,6 +54,33 @@
 | 🤖 **AI WhatsApp Assistant** | Google Gemini integration to instantly draft personalized WhatsApp follow-ups based on the traveller's enquiry. |
 | 🛠️ **Trip CMS** | Full content management system to create, edit, and open/close trip departures. |
 | 🔒 **Enterprise Security** | Supabase Authentication and strict PostgreSQL Row Level Security (RLS) protecting team data. |
+
+---
+
+## 🧪 Testing & Evaluation Guide
+
+If you are reviewing this project, here is the recommended flow to test the core functionality:
+
+### 1. The Public Flow (Unauthenticated)
+1. Navigate to the **Homepage**.
+2. Scroll to the "Open journeys" section to see the dynamically fetched trips.
+3. Click on any trip to view its details.
+4. Fill out the **Enquiry Form** with some test details (vibe, travelling as, etc.) and submit it. You will be redirected to a success page.
+
+### 2. The Team Flow (Authenticated)
+1. Navigate to `/login` and sign in with the provided Admin credentials.
+2. Check the **Overview Dashboard** — you should see your new enquiry flagged under "Needs attention".
+3. Navigate to **Leads** and find your test enquiry.
+4. Click on the lead to open the **Lead Workspace**.
+
+### 3. CRM & AI Assistant Capabilities
+1. In the Lead Workspace, change the Pipeline Stage (e.g., from `New` to `Contacted`) and assign it to an owner. Notice how the **Activity History** automatically logs these changes.
+2. Click **Draft WhatsApp reply**. The Google Gemini integration will analyze the traveller's original enquiry (their "vibe" and preferences) and generate a personalized, conversational reply ready to be pasted into WhatsApp.
+3. Add a manual internal note and see it appear in the timeline.
+
+### 4. Trip CMS
+1. Navigate to the **Trips** tab in the sidebar.
+2. Create a new trip or edit an existing one. Change its status from "Closed" to "Open" and verify it instantly appears on the public homepage.
 
 ---
 
@@ -149,8 +177,8 @@ Avoided generic component libraries in favor of a bespoke, premium Tailwind setu
 
 ### 1. Clone & Install
 ```bash
-git clone https://github.com/your-username/nomichi-trip-desk.git
-cd nomichi-trip-desk
+git clone https://github.com/syntaxXayush/NomichiTrip.git
+cd NomichiTrip
 npm install
 ```
 
